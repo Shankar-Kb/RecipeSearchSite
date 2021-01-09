@@ -1,5 +1,6 @@
 body{
     background-color: #191919;
+    font-family: sans-serif;
 }
 .card-container{
     display: flex;
@@ -7,4 +8,32 @@ body{
     justify-content: space-around;
     align-items: flex-start;
     padding-top: 20px;
+}
+.bold{
+    font-weight: 800;
+}
+.card-header>a{
+    display: block;
+    color: black;
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+.card-header>a:hover{
+    text-decoration: none;
+    color: #0085a1;
+}
+.card-text>span{
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.ingredients-title{
+    font-size: 1.45rem;
+    font-weight: 900;
+}
+.ingredients-content{
+    font-size: 1.1rem;
+    font-weight: 500;
 }
