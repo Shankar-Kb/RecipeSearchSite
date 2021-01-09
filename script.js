@@ -5,8 +5,13 @@ function createHtmlElement(element,  className='', id=''){
     return elem;
 }
 
+function buildURL(event){
+  event.preventDefault();
+  
+}
 let apiKey = '99753a5f9ea439dc1485b0ff5e190855'
 let recipeURL = 'https://api.edamam.com/search?app_id=92a8b54d&app_key='+apiKey+'&q=grilled-chicken&from=0&to=5&calories=591-722&health=alcohol-free';
+
 
 async function getRecipes(){
 let edamamResp = await fetch(recipeURL);
@@ -17,8 +22,7 @@ createCards(edamamData.hits);
 getRecipes();
 
 function createCards(data){
-    let cardContainer = document.getElementById('cardContainer');
-    
+  let cardContainer = document.getElementById('cardContainer');
     data.forEach( (elem,index) => {
         var card = createHtmlElement('div', 'card');
         card.style = 'width: 18rem';
@@ -50,8 +54,6 @@ function createCards(data){
         cardBody.append(cardText, cardIngredients, ingredientsContent);
         card.append(cardHeader, cardImg, cardBody);
         
-
-
     })
     
 }

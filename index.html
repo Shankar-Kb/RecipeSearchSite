@@ -11,20 +11,50 @@
     <link rel='stylesheet' href="style.css">
 </head>
 <body>
-    <div class="input-group mb-3">
+  <form>
+    <div class="input-group">
+
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">@</span>
+          <span class="input-group-text">Search Food Name</span>
         </div>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input type="text" class="form-control" value='' placeholder="Food Name">
+
+        <div class="input-group-prepend">
+          <span class="input-group-text">Calories Min</span>
+        </div>
+        <input type="number" class="form-control" value='' placeholder="0">
+        <input type="number" class="form-control" value='' placeholder="9999">
         <div class="input-group-append">
-          <span class="input-group-text" id="basic-addon2">@example.com</span>
+          <span class="input-group-text">Calories Max</span>
         </div>
-      </div>
+        
+        <div class="input-group-prepend">
+          <span class="input-group-text">Maximum Number of Ingredients</span>
+        </div>
+        <input type="number" class="form-control" value='' placeholder="Ex: 10">
+        
+        <div class="input-group-prepend">
+          <span class="input-group-text">Number of Results</span>
+        </div>
+        <input type="number" class="form-control" name='' value='' placeholder="Ex: 5">
+
+        <div class="input-group-prepend">
+          <span class="input-group-text">Diet</span>
+        </div>
+        <select class="custom-select">
+          <option selected>Choose...</option>
+          <option value="balanced">Balanced</option>
+          <option value="high-protein">High Protein</option>
+          <option value="high-fibre">High Fibre</option>
+          <option value="low-fat">Low Fat</option>
+          <option value="low-carb">Low Carb</option>
+          <option value="low-sodium">Low Sodium</option>
+        </select>
+        </div>
+        <button class="btn btn-primary" type="submit" onclick="buildURL(event)">Search</button>
+      </form>  
       <div class="card-container" id='cardContainer'></div>
+
     <script src="script.js"></script>
 </body>
 </html>
