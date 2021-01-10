@@ -5,8 +5,8 @@ function createHtmlElement(element,  className='', id=''){
     return elem;
 }
 
-let apiID = '92a8b54d'
-let apiKey = '99753a5f9ea439dc1485b0ff5e190855'
+let apiID = '92a8b54d';
+let apiKey = '99753a5f9ea439dc1485b0ff5e190855';
 let recipeURL = 'https://api.edamam.com/search?app_id='+apiID+'&app_key='+apiKey;
 
 function buildURL(event){
@@ -23,6 +23,7 @@ function buildURL(event){
    } 
    else {
      if (elem.value === '' && elem.name === 'q') elem.value = 'food';
+     if (elem.value === '') i++;
      if (elem.value.includes(' ')) elem.value = elem.value.trim().replace(' ', '-');
      recipeURL += '&'+elem.name+'='+elem.value;
     }
