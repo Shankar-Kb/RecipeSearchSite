@@ -17,15 +17,18 @@ function buildURL(event){
   for( var i = 0; i < form.elements.length-2; i++ ) {
    var elem = form.elements[i];
   
-   if(elem.name == 'calMin'){
+   if(elem.name === 'calMin'){
+      if(elem.value !== ''){
       recipeURL += '&calories='+form.elements[i].value+'-'+form.elements[i+1].value;
       i++;
+      }
    } 
    else {
      if (elem.value === '' && elem.name === 'q') elem.value = 'food';
-     if (elem.value === '') i++;
+     if (elem.value !== ''){
      if (elem.value.includes(' ')) elem.value = elem.value.trim().replace(' ', '-');
      recipeURL += '&'+elem.name+'='+elem.value;
+     }
     }
   }
 
