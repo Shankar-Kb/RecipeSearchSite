@@ -4,8 +4,10 @@ function createHtmlElement(element,  className='', id=''){
     elem.setAttribute('id', id);
     return elem;
 }
+
+let apiID = '92a8b54d'
 let apiKey = '99753a5f9ea439dc1485b0ff5e190855'
-let recipeURL = 'https://api.edamam.com/search?app_id=92a8b54d&app_key='+apiKey;
+let recipeURL = 'https://api.edamam.com/search?app_id='+apiID+'&app_key='+apiKey;
 
 function buildURL(event){
   event.preventDefault();
@@ -26,7 +28,7 @@ function buildURL(event){
     }
   }
 
-  console.log(recipeURL);
+  //console.log(recipeURL);
   form.reset();
   getRecipes(recipeURL);
 }
@@ -34,9 +36,9 @@ function buildURL(event){
 
 async function getRecipes(URL){
 let edamamResp = await fetch(URL);
-recipeURL = 'https://api.edamam.com/search?app_id=92a8b54d&app_key='+apiKey;
+recipeURL = 'https://api.edamam.com/search?app_id='+apiID+'&app_key='+apiKey;
 let edamamData = await edamamResp.json();
-console.log(edamamData.hits);
+//console.log(edamamData.hits);
 if(edamamData.hits.length === 0 || edamamData.hits === 'undefined') document.getElementById('noResults').innerHTML = `No Results`;
 createCards(edamamData.hits);
 }
