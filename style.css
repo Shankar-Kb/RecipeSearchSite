@@ -1,16 +1,27 @@
 body{
-    background-color: #191919;
+    background-color:#F5F5F5;
     font-family: sans-serif;
 }
 .card-container{
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-start;
+    align-content: space-around;
     padding-top: 20px;
+    margin: 0px 50px;
 }
 .bold{
     font-weight: 800;
+}
+.site-title{
+    font-size: 85px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+}
+.card{
+    width: 20rem;
+    margin-bottom: 50px;
 }
 .card-header>a{
     display: block;
@@ -36,4 +47,27 @@ body{
 .ingredients-content{
     font-size: 1.1rem;
     font-weight: 500;
+}
+
+.buttons-box{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.buttons-box>button{
+    margin: 0px 5px;
+    width: 100px;
+}
+
+#noResults{
+    font-size: 3.5rem;
+}
+
+#foodNameInput{
+    min-width: 75px;  
+}
+input[type=number]{
+     min-width: 50px !important;
+     max-width: 100px;
 }

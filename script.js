@@ -4,28 +4,48 @@ function createHtmlElement(element,  className='', id=''){
     elem.setAttribute('id', id);
     return elem;
 }
+let apiKey = '99753a5f9ea439dc1485b0ff5e190855'
+let recipeURL = 'https://api.edamam.com/search?app_id=92a8b54d&app_key='+apiKey;
 
 function buildURL(event){
   event.preventDefault();
+
+  var form = document.getElementById('inputForm');
+  //console.log(form.elements);
+  for( var i = 0; i < form.elements.length-2; i++ ) {
+   var elem = form.elements[i];
   
+   if(elem.name == 'calMin'){
+      recipeURL += '&calories='+form.elements[i].value+'-'+form.elements[i+1].value;
+      i++;
+   } 
+   else {
+     if (elem.value === '' && elem.name === 'q') elem.value = 'food';
+     if (elem.value.includes(' ')) elem.value = elem.value.trim().replace(' ', '-');
+     recipeURL += '&'+elem.name+'='+elem.value;
+    }
+  }
+
+  console.log(recipeURL);
+  form.reset();
+  getRecipes(recipeURL);
 }
-let apiKey = '99753a5f9ea439dc1485b0ff5e190855'
-let recipeURL = 'https://api.edamam.com/search?app_id=92a8b54d&app_key='+apiKey+'&q=grilled-chicken&from=0&to=5&calories=591-722&health=alcohol-free';
 
 
-async function getRecipes(){
-let edamamResp = await fetch(recipeURL);
+async function getRecipes(URL){
+let edamamResp = await fetch(URL);
+recipeURL = 'https://api.edamam.com/search?app_id=92a8b54d&app_key='+apiKey;
 let edamamData = await edamamResp.json();
 console.log(edamamData.hits);
+if(edamamData.hits.length === 0 || edamamData.hits === 'undefined') document.getElementById('noResults').innerHTML = `No Results`;
 createCards(edamamData.hits);
 }
-getRecipes();
+
 
 function createCards(data){
   let cardContainer = document.getElementById('cardContainer');
     data.forEach( (elem,index) => {
         var card = createHtmlElement('div', 'card');
-        card.style = 'width: 18rem';
         cardContainer.append(card);
         
         var cardBody = createHtmlElement('div', 'card-body');
@@ -46,14 +66,13 @@ function createCards(data){
         var cardIngredients = createHtmlElement('span', 'btn');
         cardIngredients.setAttribute('data-toggle', 'collapse');
         cardIngredients.setAttribute('data-target', `#I${index}`);
-        cardIngredients.innerHTML = `<span class='ingredients-title'><i class="fas fa-utensils fa-1x"></i> Ingredient List</span>`;
+        cardIngredients.innerHTML = `<span class='ingredients-title text-center'><i class="fas fa-utensils fa-1x"></i> Ingredient List</span>`;
 
         var ingredientsContent = createHtmlElement('div', 'collapse ingredients-content', `I${index}`);
         ingredientsContent.innerHTML = `${elem.recipe.ingredientLines}`;
         
         cardBody.append(cardText, cardIngredients, ingredientsContent);
         card.append(cardHeader, cardImg, cardBody);
-        
     })
     
 }
@@ -73,11 +92,6 @@ function getVitamins(data){
   return vitaminsArray;
 }
 
-/* <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> */
+function clearScreen(){
+  document.getElementById('cardContainer').innerHTML = '';
+}
