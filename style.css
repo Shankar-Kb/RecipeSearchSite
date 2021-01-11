@@ -1,6 +1,55 @@
 body{
-    background-color:#F5F5F5;
+    background-color: #191919;
     font-family: sans-serif;
+}
+.site-title{
+    color: #fff;
+    font-size: 85px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0px; 
+}
+.search-container{
+    display: flex;
+    width: 100%;
+    height: 400px;
+    flex-flow: column;
+    justify-content: center;
+    background-image: url('assets/pexels-pixabay-326279.jpg');
+}
+.search-box{
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+}
+.search-box>button{
+    margin: 0px 5px;
+    width: 50px;
+    height: 41.5px;
+    font-size: 25px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid white;
+    padding-top: 2.5px;
+}
+#advandedSearchButton{
+    margin: 10px 0px;
+    background-color: transparent;
+    font-weight: 700;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+#foodNameInput{
+    min-width: 75px;  
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 500;
+    background-color: transparent;
+}
+input[type=number]{
+    min-width: 50px !important;
+    max-width: 100px;
 }
 .card-container{
     display: flex;
@@ -14,14 +63,12 @@ body{
 .bold{
     font-weight: 800;
 }
-.site-title{
-    font-size: 85px;
-    font-weight: 600;
-    font-family: 'Roboto', sans-serif;
-}
 .card{
     width: 20rem;
     margin-bottom: 50px;
+}
+.card-header{
+    height: 75px;
 }
 .card-header>a{
     display: block;
@@ -32,6 +79,9 @@ body{
 .card-header>a:hover{
     text-decoration: none;
     color: #0085a1;
+}
+.card-text{
+    height: 50%;
 }
 .card-text>span{
     display: block;
@@ -48,26 +98,6 @@ body{
     font-size: 1.1rem;
     font-weight: 500;
 }
-
-.buttons-box{
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.buttons-box>button{
-    margin: 0px 5px;
-    width: 100px;
-}
-
 #noResults{
     font-size: 3.5rem;
-}
-
-#foodNameInput{
-    min-width: 75px;  
-}
-input[type=number]{
-     min-width: 50px !important;
-     max-width: 100px;
 }

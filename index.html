@@ -13,38 +13,38 @@
     <link rel='stylesheet' href="style.css">
 </head>
 <body>
-  <header>
-    <h1 class='site-title text-center'>RECIPE SEARCH SITE</h1>
-  </header>
-
-  <div class="container-fluid">
+  <div class="search-container">
+    <h1 class='site-title text-center'>Recipe Search Site</h1>
    <form id='inputForm'>
-
-    <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Food Search</span>
-        </div>
+        
+        <div class="search-box">
+        <button class="btn" type="button" onclick="buildURL()"><i class="fas fa-search"></i></button>
         <input type="text" class="form-control" name='q' value='' placeholder="Food Name" id='foodNameInput'>
+        <button class="btn" type="button" onclick="clearScreen()"><i class="fas fa-times"></i></button>
+        </div>
 
+        <button class="btn btn-secondary" type='button' id="advandedSearchButton" data-toggle="collapse" data-target="#advancedSearch">Advanced Search</button>
+        
+        <div class="input-group collapse" id="advancedSearch">
         <div class="input-group-prepend">
           <span class="input-group-text">Calories Min</span>
         </div>
-        <input type="number" class="form-control" name='calMin' value='' placeholder="0" min="0" max="999" required>
+        <input type="number" class="form-control" name='calMin' value='' placeholder="0" min="0" max="999">
         
         <div class="input-group-prepend">
           <span class="input-group-text">Calories Max</span>
         </div>
-        <input type="number" class="form-control" name='calMax' value='' placeholder="9999" min="1" max="9999" required>
+        <input type="number" class="form-control" name='calMax' value='' placeholder="9999" min="1" max="9999">
         
         <div class="input-group-prepend">
           <span class="input-group-text">Max Ingredients</span>
         </div>
-        <input type="number" class="form-control" name='ingr' value='' placeholder="Ex: 10" min="1" max="99" required>
+        <input type="number" class="form-control" name='ingr' value='' placeholder="Ex: 10" min="1" max="99">
         
         <div class="input-group-prepend">
           <span class="input-group-text">Max Results</span>
         </div>
-        <input type="number" class="form-control" name='to' value='' placeholder="Ex: 5" min="1" max="99" required>
+        <input type="number" class="form-control" name='to' value='' placeholder="Ex: 5" min="1" max="99">
 
         <div class="input-group-prepend">
           <span class="input-group-text">Diet</span>
@@ -57,30 +57,13 @@
           <option value="low-fat">Low Fat</option>
           <option value="low-carb">Low Carb</option>
         </select>
-        
-        <!-- <div class="input-group-prepend">
-        <span class="input-group-text">Meal Type</span>
-        </div>
-        <select class="custom-select" name='mealType' required>
-          <option selected>Choose</option>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Snack">Snack</option>
-          <option value="Teatime">Tea Time</option>
-          <option value="Dinner">Dinner</option>
-        </select> -->
-      
       </div>
-    </div>
-        <div class="buttons-box">
-        <button class="btn btn-secondary" type="submit" onclick="buildURL(event)">Search</button>
-        <button class="btn btn-secondary" type="button" onclick="clearScreen()">Clear</button>
-        </div>
-      </form>
-     </div>
-     <div class="results text-center" id='noResults'></div>
-      <div class="card-container" id='cardContainer'></div>
+    </form>
+  </div>
 
-    <script src="script.js"></script>
+  <div class="results text-center" id='noResults'></div>
+  <div class="card-container" id='cardContainer'></div>
+
+<script src="script.js"></script>
 </body>
 </html>

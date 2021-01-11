@@ -9,29 +9,30 @@ let apiID = '92a8b54d';
 let apiKey = '99753a5f9ea439dc1485b0ff5e190855';
 let recipeURL = 'https://api.edamam.com/search?app_id='+apiID+'&app_key='+apiKey;
 
-function buildURL(event){
-  event.preventDefault();
+function buildURL(){
 
   var form = document.getElementById('inputForm');
   //console.log(form.elements);
-  for( var i = 0; i < form.elements.length-2; i++ ) {
+  for( var i = 0; i < form.elements.length; i++ ) {
    var elem = form.elements[i];
-  
-   if(elem.name === 'calMin'){
-      if(elem.value !== ''){
-      recipeURL += '&calories='+form.elements[i].value+'-'+form.elements[i+1].value;
-      i++;
+   
+   if(elem.type !== 'button'){
+
+      if(elem.name === 'calMin'){
+         if(elem.value !== ''){
+         recipeURL += '&calories='+form.elements[i].value+'-'+form.elements[i+1].value;
+         i++;
+         }
+      } 
+      else {
+        if (elem.value === '' && elem.name === 'q') elem.value = 'food';
+        if (elem.value !== '' && elem.value !== 'Choose'){
+          if (elem.value.includes(' ')) elem.value = elem.value.trim().replace(' ', '-');
+          recipeURL += '&'+elem.name+'='+elem.value;
+        }
       }
-   } 
-   else {
-     if (elem.value === '' && elem.name === 'q') elem.value = 'food';
-     if (elem.value !== ''){
-     if (elem.value.includes(' ')) elem.value = elem.value.trim().replace(' ', '-');
-     recipeURL += '&'+elem.name+'='+elem.value;
-     }
     }
   }
-
   //console.log(recipeURL);
   form.reset();
   getRecipes(recipeURL);
